@@ -10,7 +10,7 @@ const createCard = (name, description) => {
 
   repoCard.className = 'repo-card';
 
-  repoLink.setAttribute(`href`, `http://github.com/${inputTxt}/${name}`);
+  repoLink.setAttribute(`href`, `https://github.com/${inputTxt}/${name}`);
   repoLink.textContent = name;
 
   repoTxt.textContent = description || '';
@@ -24,7 +24,7 @@ const createCard = (name, description) => {
 const searchRepos = () => {
   inputTxt = srcInput.value;
 
-  axios.get(`http://api.github.com/users/${inputTxt}/repos`)
+  axios.get(`https://api.github.com/users/${inputTxt}/repos`)
   .then(response => showRepos(response.data))
   .catch(error => console.warn(error));
 }
