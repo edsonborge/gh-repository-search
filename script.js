@@ -1,6 +1,7 @@
 const srcInput = document.querySelector('.search-input');
 const srcButton = document.querySelector('.search-btn');
 const gridRepos = document.querySelector('.grid-repos');
+const searchForm = document.querySelector('.search-form');
 const inputText = '';
  
 const createCard = (name, description) => {
@@ -21,18 +22,21 @@ const createCard = (name, description) => {
   gridRepos.appendChild(repoCard);
 }
 
-const searchRepos = () => {
+const searchRepos = (e) => {
+  e.preventDefault();
   inputTxt = srcInput.value;
 
   axios.get(`https://api.github.com/users/${inputTxt}/repos`)
   .then(response => showRepos(response.data))
   .catch(error => console.warn(error));
-}
 
-srcButton.onclick = searchRepos;
+  return false;
+}
 
 const showRepos = (repos) => {
   for(let i = 0; i < repos.length; i++) {
     createCard(repos[i].name, repos[i].description);
   }
 }
+
+searchForm.addEventListener('submit', searchRepos);
