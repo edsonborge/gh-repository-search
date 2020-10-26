@@ -70,6 +70,11 @@ body {
   color: var(--color-text);
 }
 
+.loading {
+  display: none;
+  font-size: 20px;
+}
+
 .grid-repos {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -83,14 +88,15 @@ body {
 }
 
 @media (max-width: 650px) {
-  .search-repos {
+  .search-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
   }
 
-  .search-repos input {
-    margin-bottom: 10px;
+  .search-form input {
+    margin: 5px;
   }
 
   .grid-repos {
